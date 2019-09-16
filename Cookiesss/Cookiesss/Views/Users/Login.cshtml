@@ -1,0 +1,50 @@
+﻿@model Cookiesss.Models.AppUsers
+@{
+    ViewBag.Title = "Login";
+    
+}
+
+<h3>Login</h3>
+
+@using (Html.BeginForm("Login", "Users", FormMethod.Post,new { id="LoginForm"}))
+{
+    <table class="tab-content table-condensed">
+        <tr>
+            <td>@Html.LabelFor(m => m.UserName)</td>
+            <td>@Html.TextBoxFor(m => m.UserName,new { @name="UserName"})</td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(m=>m.Password)</td>
+            <td>@Html.PasswordFor(m=>m.Password ,new { @name="Password"})</td>
+        </tr>
+
+        <tr>
+            <td><button id="LoginForm" name="submit" value="Login">Login</button></td>
+        </tr>
+    </table>        
+}
+
+@section scripts{        
+    <script>
+        $("#LoginForm").submit(function () {
+            //alert("Hello");
+            var uname = $("#LoginForm input[name=UserName]").val();
+            var pass = $("#LoginForm input[name=Password]").val();
+
+            if(uname==null || uname=="")
+            {
+                alert("Enter UserName");
+                return false;
+            }
+
+            if(pass==null || pass=="")
+            {
+                alert("Enter Password");
+                return false;
+            }
+
+        })
+    </script>
+    }
+
